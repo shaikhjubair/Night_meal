@@ -302,7 +302,7 @@ export const products: Product[] = [
     isProcuredByRider: true,
     procurementNote: "Rider Action Required: Rider must purchase this item on the way to the customer.",
     badge: "Rider Buys on Way",
-    image: "https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=800&q=80",
+    image: "/images/oris-silver.png",
   },
   {
     id: "marlboro",
@@ -318,7 +318,7 @@ export const products: Product[] = [
     isProcuredByRider: true,
     procurementNote: "Rider Action Required: Rider must purchase this item on the way to the customer.",
     badge: "Rider Buys on Way",
-    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80",
+    image: "/images/marlboro.png",
   },
   {
     id: "benson",
@@ -334,7 +334,7 @@ export const products: Product[] = [
     isProcuredByRider: true,
     procurementNote: "Rider Action Required: Rider must purchase this item on the way to the customer.",
     badge: "Rider Buys on Way",
-    image: "https://images.unsplash.com/photo-1541689592655-f5f52825a3b8?auto=format&fit=crop&w=800&q=80",
+    image: "/images/benson.png",
   },
   {
     id: "goldleaf-switch",
@@ -350,7 +350,7 @@ export const products: Product[] = [
     isProcuredByRider: true,
     procurementNote: "Rider Action Required: Rider must purchase this item on the way to the customer.",
     badge: "Rider Buys on Way",
-    image: "https://images.unsplash.com/photo-1495954484750-af469f2f9be5?auto=format&fit=crop&w=800&q=80",
+    image: "/images/goldleaf.png",
   },
   {
     id: "lucky-strike",
@@ -366,7 +366,7 @@ export const products: Product[] = [
     isProcuredByRider: true,
     procurementNote: "Rider Action Required: Rider must purchase this item on the way to the customer.",
     badge: "Rider Buys on Way",
-    image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80",
+    image: "/images/lucky-strike.png",
   },
   {
     id: "camel-blue",
@@ -382,7 +382,7 @@ export const products: Product[] = [
     isProcuredByRider: true,
     procurementNote: "Rider Action Required: Rider must purchase this item on the way to the customer.",
     badge: "Rider Buys on Way",
-    image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80",
+    image: "/images/camel.png",
   },
 ]
 

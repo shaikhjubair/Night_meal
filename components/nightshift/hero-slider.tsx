@@ -18,7 +18,6 @@ import {
 } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
 import {
   Select,
   SelectContent,
@@ -294,53 +293,66 @@ export function HeroSlider({
           </div>
         </div>
 
-        {/* Desktop Bashundhara R/A Drop Zone Selector Card */}
-        <Card className="hidden rounded-[26px] border-border/80 bg-background/80 p-0 shadow-2xl backdrop-blur-xl lg:block">
-          <CardContent className="flex flex-col gap-4 p-5">
-            <div className="flex items-center justify-between">
+        {/* Desktop Bashundhara R/A Drop Zone Selector - Borderless & Integrated */}
+        <div className="hidden lg:flex flex-col justify-center space-y-4 py-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2.5">
+              <span className="flex size-8 items-center justify-center rounded-xl bg-primary/20 text-primary backdrop-blur-md">
+                <MapPin aria-hidden="true" className="size-4" />
+              </span>
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
-                  Bashundhara R/A
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary block leading-none">
+                  Delivery Zone
                 </span>
-                <p className="text-xs font-semibold text-foreground">Select Your Delivery Block</p>
+                <p className="text-xs font-bold text-white/90 mt-1">Bashundhara R/A</p>
               </div>
-              <MapPin aria-hidden="true" className="size-5 text-primary" />
             </div>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 text-[10px] font-bold text-emerald-400 backdrop-blur-md">
+              <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              10 PM — 4 AM
+            </span>
+          </div>
 
+          <div className="space-y-1.5">
+            <label className="text-[11px] font-medium text-slate-300">
+              Select Your Residential Block
+            </label>
             <Select value={selectedBlock} onValueChange={(value) => value && onBlockChange(value)}>
-              <SelectTrigger className="h-11 w-full rounded-xl border-border/80 bg-secondary/50 px-3 font-medium">
-                <SelectValue>{`Bashundhara Block ${currentBlock.code}`}</SelectValue>
+              <SelectTrigger className="h-12 w-full rounded-2xl border border-white/15 bg-black/40 px-3.5 text-xs sm:text-sm font-semibold text-white shadow-lg backdrop-blur-md hover:border-primary/50 hover:bg-black/60 transition-all focus:ring-1 focus:ring-primary/40">
+                <SelectValue>{`Bashundhara Block ${currentBlock.code} (${currentBlock.zone})`}</SelectValue>
               </SelectTrigger>
-              <SelectContent align="end" className="w-[280px]">
+              <SelectContent align="end" className="w-[300px] rounded-2xl border border-white/10 bg-slate-900/95 backdrop-blur-2xl p-1.5 text-white shadow-2xl">
                 {deliveryBlocks.map((block) => (
-                  <SelectItem key={block.code} value={block.code}>
-                    <span>Block {block.code} ({block.zone})</span>
-                    <span className="font-mono text-xs text-muted-foreground">
-                      {formatCurrency(block.fee)} flat
-                    </span>
+                  <SelectItem key={block.code} value={block.code} className="rounded-xl py-2 px-3 focus:bg-white/10 focus:text-white cursor-pointer">
+                    <div className="flex items-center justify-between w-full gap-3">
+                      <span className="font-semibold">Block {block.code} <span className="text-xs text-slate-400">({block.zone})</span></span>
+                      <span className="font-mono text-xs font-bold text-emerald-400">
+                        {formatCurrency(block.fee)} flat
+                      </span>
+                    </div>
                   </SelectItem>
                 ))}
               </SelectContent>
             </Select>
+          </div>
 
-            <div className="flex items-center justify-between border-t border-border/70 pt-3.5">
-              <div>
-                <p className="text-xs text-muted-foreground">Block {currentBlock.code} Delivery Fee</p>
-                <p className="mt-0.5 text-base font-bold text-foreground">
-                  {formatCurrency(currentBlock.fee)} <span className="text-xs font-normal text-muted-foreground">flat rate</span>
-                </p>
-              </div>
-              <span className="grid size-10 place-items-center rounded-2xl bg-primary/10 text-primary">
-                <ShieldCheck aria-hidden="true" className="size-5" />
-              </span>
+          <div className="flex items-center justify-between pt-1 border-t border-white/10">
+            <div>
+              <p className="text-[11px] font-medium text-slate-400">Block {currentBlock.code} Delivery Fee</p>
+              <p className="font-mono text-lg font-black text-white mt-0.5">
+                {formatCurrency(currentBlock.fee)} <span className="text-[11px] font-normal text-slate-400">flat rate</span>
+              </p>
             </div>
+            <div className="flex items-center gap-1.5 rounded-xl bg-white/[0.04] border border-white/[0.08] px-3 py-1.5 backdrop-blur-md">
+              <ShieldCheck aria-hidden="true" className="size-4 text-emerald-400" />
+              <span className="text-[11px] font-bold text-slate-300">Gate Handoff</span>
+            </div>
+          </div>
 
-            <div className="rounded-xl border border-primary/20 bg-primary/5 p-2.5 text-[11px] leading-relaxed text-muted-foreground">
-              <span className="font-semibold text-foreground">Bashundhara R/A Exclusive:</span>{" "}
-              We deliver strictly to Blocks A, G, H, I, J, K, L and M every night from 10 PM to 4 AM.
-            </div>
-          </CardContent>
-        </Card>
+          <p className="text-[11px] leading-relaxed text-slate-400/90">
+            <span className="font-bold text-slate-200">Late Night Direct Delivery:</span> Serving Bashundhara Blocks A–M every night until 4 AM.
+          </p>
+        </div>
       </div>
 
       {/* Mobile Bottom Strip */}
