@@ -50,11 +50,12 @@ export function Storefront({
   }, [activeCategory, search])
 
   return (
-    <main className="mx-auto w-full max-w-[1440px] px-4 pb-28 pt-5 sm:px-6 lg:px-10 lg:pb-16 lg:pt-8">
-      {/* Dynamic Hero Image Slider & Bashundhara Delivery Zone Selector */}
+    <main className="w-full pb-28 lg:pb-16">
+      {/* Full-width Edge-to-Edge Hero Image Slider - Blends seamlessly into the dark background */}
       <HeroSlider selectedBlock={selectedBlock} onBlockChange={onBlockChange} />
 
-      <section id="categories" className="mt-9 scroll-mt-28" aria-labelledby="categories-heading">
+      <div className="mx-auto w-full max-w-[1440px] px-4 pt-4 sm:px-6 lg:px-10">
+        <section id="categories" className="mt-8 scroll-mt-28" aria-labelledby="categories-heading">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">A little bit of everything</p>
@@ -218,14 +219,15 @@ export function Storefront({
         </Card>
       </section>
 
-      <footer className="mt-12 flex flex-col gap-3 border-t border-border/70 py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-        <span>© 2026 Rater khabar · Bashundhara R/A. Prices shown in BDT (৳).</span>
-        <span className="flex flex-wrap gap-x-4 gap-y-2">
-          <a href="/login" className="transition-colors hover:text-foreground">Customer sign in</a>
-          <a href="/portal/super-admin" className="transition-colors hover:text-foreground">Operations access</a>
-          <a href="/dashboard/admin" className="transition-colors hover:text-foreground">Dashboard preview</a>
-        </span>
-      </footer>
+        <footer className="mt-12 flex flex-col gap-3 border-t border-border/70 py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <span>© 2026 Rater khabar · Bashundhara R/A. Prices shown in BDT (৳).</span>
+          <span className="flex flex-wrap gap-x-4 gap-y-2">
+            <a href="/login" className="transition-colors hover:text-foreground">Customer sign in</a>
+            <a href="/portal/super-admin" className="transition-colors hover:text-foreground">Operations access</a>
+            <a href="/dashboard/admin" className="transition-colors hover:text-foreground">Dashboard preview</a>
+          </span>
+        </footer>
+      </div>
     </main>
   )
 }

@@ -80,17 +80,6 @@ export function NightshiftApp() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="sticky top-0 z-40 border-b border-border/70 bg-background/90 backdrop-blur-xl">
-        <div className="border-b border-border/50 bg-secondary/30">
-          <div className="mx-auto flex h-8 max-w-[1440px] items-center justify-between px-4 text-[9px] font-bold uppercase tracking-[0.16em] text-muted-foreground sm:px-6 lg:px-10">
-            <span className="inline-flex items-center gap-2">
-              <span className="relative flex size-1.5" aria-hidden="true"><span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-60" /><span className="relative inline-flex size-1.5 rounded-full bg-primary" /></span>
-              <span className="text-primary font-bold">DELIVERY ONLY IN BASHUNDHARA R/A</span>
-              <span className="text-foreground">· 10 PM — 4 AM</span>
-            </span>
-            <span className="hidden sm:inline text-foreground/80">Approved Blocks: A · G · H · I · J · K · L · M</span>
-            <span className="sm:hidden font-mono text-primary">Bashundhara R/A</span>
-          </div>
-        </div>
         <div className="mx-auto flex h-[68px] max-w-[1440px] items-center justify-between gap-3 px-4 sm:px-6 lg:px-10">
           <BrandMark />
           <nav aria-label="Main navigation" className="hidden items-center gap-7 text-xs font-medium text-muted-foreground lg:flex">

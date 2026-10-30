@@ -302,7 +302,7 @@ export const products: Product[] = [
     isProcuredByRider: true,
     procurementNote: "Rider Action Required: Rider must purchase this item on the way to the customer.",
     badge: "Rider Buys on Way",
-    image: "/images/oris-silver.png",
+    image: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Marlboro_Silver_Pack.jpg",
   },
   {
     id: "marlboro",
@@ -318,7 +318,7 @@ export const products: Product[] = [
     isProcuredByRider: true,
     procurementNote: "Rider Action Required: Rider must purchase this item on the way to the customer.",
     badge: "Rider Buys on Way",
-    image: "/images/marlboro.png",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Marlboro_Logo.svg/1024px-Marlboro_Logo.svg.png",
   },
   {
     id: "benson",
@@ -334,7 +334,7 @@ export const products: Product[] = [
     isProcuredByRider: true,
     procurementNote: "Rider Action Required: Rider must purchase this item on the way to the customer.",
     badge: "Rider Buys on Way",
-    image: "/images/benson.png",
+    image: "https://upload.wikimedia.org/wikipedia/commons/b/bc/Benson_%26_Hedges_Gold_Pack.jpg",
   },
   {
     id: "goldleaf-switch",
@@ -350,7 +350,7 @@ export const products: Product[] = [
     isProcuredByRider: true,
     procurementNote: "Rider Action Required: Rider must purchase this item on the way to the customer.",
     badge: "Rider Buys on Way",
-    image: "/images/goldleaf.png",
+    image: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Gold_Leaf_pack.jpg",
   },
   {
     id: "lucky-strike",
@@ -366,7 +366,7 @@ export const products: Product[] = [
     isProcuredByRider: true,
     procurementNote: "Rider Action Required: Rider must purchase this item on the way to the customer.",
     badge: "Rider Buys on Way",
-    image: "/images/lucky-strike.png",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Lucky_Strike_logo.svg/1024px-Lucky_Strike_logo.svg.png",
   },
   {
     id: "camel-blue",
@@ -382,7 +382,7 @@ export const products: Product[] = [
     isProcuredByRider: true,
     procurementNote: "Rider Action Required: Rider must purchase this item on the way to the customer.",
     badge: "Rider Buys on Way",
-    image: "/images/camel.png",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Camel_logo.svg/1024px-Camel_logo.svg.png",
   },
 ]
 

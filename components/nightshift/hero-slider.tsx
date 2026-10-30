@@ -13,7 +13,6 @@ import {
   Pause,
   Play,
   ShieldCheck,
-  Sparkles,
   Tag,
 } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
@@ -30,7 +29,7 @@ import { deliveryBlocks, formatCurrency } from "@/lib/nightshift-data"
 export type HeroAdSlide = {
   id: string
   image: string
-  overlayTag: string // e.g. "Tonight's Special Offer", "Late Night Deals"
+  overlayTag: string
   title: string
   highlightWord?: string
   subtitle: string
@@ -57,24 +56,24 @@ export const defaultHeroAds: HeroAdSlide[] = [
     id: "beef-khichuri",
     image: "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=1800&q=85",
     overlayTag: "Late Night Deals",
-    title: "Authentic Beef Khichuri &",
-    highlightWord: "Morog Polao",
-    subtitle: "Aromatic chinigura rice slow-simmered with tender spiced beef and rich caramelized gravy.",
-    offerPrice: "Special ৳280",
+    title: "Aromatic Hot",
+    highlightWord: "Beef Khichuri",
+    subtitle: "Authentic slow-cooked chinigura rice and lentils loaded with tender spicy beef shanks.",
+    offerPrice: "Only ৳280",
     badgeColor: "border-primary/30 bg-primary/15 text-primary",
-    ctaText: "View Rice Specials",
+    ctaText: "Explore Rice Items",
     ctaHref: "#popular",
   },
   {
-    id: "loaded-burger-shawarma",
-    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1800&q=85",
+    id: "chicken-shawarma",
+    image: "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=1800&q=85",
     overlayTag: "Midnight Cravings",
-    title: "Juicy Loaded Bites &",
+    title: "Loaded Spit-Roasted",
     highlightWord: "Chicken Shawarma",
-    subtitle: "Toasted pita rolls and thick gourmet patties layered with melted cheese, garlic mayo, and crisps.",
-    offerPrice: "Shawarma ৳180",
-    badgeColor: "border-orange-500/30 bg-orange-500/15 text-orange-400",
-    ctaText: "Explore Midnight Bites",
+    subtitle: "Tender shredded spiced chicken wrapped with garlic mayo in toasted Lebanese flatbread.",
+    offerPrice: "Wrap ৳180",
+    badgeColor: "border-purple-500/30 bg-purple-500/15 text-purple-400",
+    ctaText: "Quick Bites",
     ctaHref: "#popular",
   },
   {
@@ -131,17 +130,23 @@ export function HeroSlider({
       initial={false}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: "easeOut" }}
-      className="relative isolate min-h-[460px] overflow-hidden rounded-[32px] border border-border/80 bg-card shadow-2xl sm:min-h-[500px] lg:min-h-[520px]"
+      className="relative isolate w-full min-h-[520px] sm:min-h-[560px] lg:min-h-[620px] overflow-hidden bg-transparent"
       aria-labelledby="hero-slider-heading"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Background Image Carousel with Smooth Framer Motion Cross-fade */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
+      {/* Background Image Carousel with CSS Gradient Mask for Seamless Edge Bleed */}
+      <div
+        className="absolute inset-0 -z-10 overflow-hidden pointer-events-none"
+        style={{
+          maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+        }}
+      >
         <AnimatePresence mode="wait">
           <motion.div
             key={activeSlide.id}
-            initial={{ opacity: 0, scale: 1.06 }}
+            initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.75, ease: "easeInOut" }}
@@ -152,23 +157,29 @@ export function HeroSlider({
               alt={activeSlide.title}
               fill
               priority
-              sizes="(max-width: 768px) 100vw, 1440px"
-              className="object-cover object-center brightness-75 contrast-110"
+              sizes="100vw"
+              className="object-cover object-center brightness-[0.72] contrast-[1.08]"
             />
           </motion.div>
         </AnimatePresence>
 
-        {/* Ambient Dark Gradients & Vignette for Ultra-Legibility */}
-        <div aria-hidden="true" className="absolute inset-0 z-10 bg-gradient-to-r from-background via-background/90 to-background/30" />
-        <div aria-hidden="true" className="absolute inset-0 z-10 bg-gradient-to-t from-background via-transparent to-background/30" />
+        {/* Seamless Multi-Directional Gradient Overlays */}
+        {/* Left side text backdrop */}
+        <div aria-hidden="true" className="absolute inset-0 z-10 bg-gradient-to-r from-background via-background/80 via-45% to-transparent" />
+        {/* Top header blend */}
+        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-28 z-10 bg-gradient-to-b from-background via-background/60 to-transparent" />
+        {/* Bottom edge dissolve into the page background */}
+        <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-52 z-10 bg-gradient-to-t from-background via-background/80 to-transparent" />
+
+        {/* Atmospheric Ambient Glows */}
         <div aria-hidden="true" className="absolute -top-24 -left-24 z-10 size-96 rounded-full bg-primary/20 blur-3xl pointer-events-none" />
         <div aria-hidden="true" className="absolute -bottom-24 -right-24 z-10 size-96 rounded-full bg-amber-500/15 blur-3xl pointer-events-none" />
       </div>
 
-      {/* Main Hero Content Grid */}
-      <div className="relative z-20 grid min-h-[460px] grid-cols-1 items-center gap-8 p-6 sm:min-h-[500px] sm:p-9 lg:min-h-[520px] lg:grid-cols-[minmax(0,1.2fr)_320px] lg:p-12">
+      {/* Main Hero Content Grid - Centered & Floating directly on the seamless background */}
+      <div className="relative z-20 mx-auto max-w-[1440px] px-4 pt-10 pb-16 sm:px-6 sm:pt-14 sm:pb-20 lg:px-10 lg:pt-16 lg:pb-24 grid min-h-[500px] grid-cols-1 items-center gap-8 sm:min-h-[540px] lg:min-h-[580px] lg:grid-cols-[minmax(0,1.2fr)_340px]">
         <div className="max-w-[700px]">
-          {/* Prominent Operational Badges & Delivery Area Rules */}
+          {/* Operational Badges & Rules */}
           <div className="flex flex-wrap items-center gap-2">
             <Badge
               variant="outline"
@@ -234,7 +245,7 @@ export function HeroSlider({
           <div className="mt-7 flex flex-wrap items-center gap-3">
             <Button
               size="lg"
-              className="h-11 rounded-full px-5 text-sm font-bold shadow-lg"
+              className="h-11 rounded-full px-5 text-sm font-bold shadow-lg bg-gradient-to-r from-primary to-emerald-600 hover:brightness-110 transition-all"
               nativeButton={false}
               render={<a href="#popular" />}
             >
@@ -243,11 +254,11 @@ export function HeroSlider({
             </Button>
 
             {/* Slider Navigation Arrows & Dot Indicators */}
-            <div className="flex items-center gap-1.5 rounded-full border border-border/80 bg-background/60 p-1 backdrop-blur-md">
+            <div className="flex items-center gap-1.5 rounded-full border border-white/10 bg-black/40 p-1 backdrop-blur-md">
               <Button
                 variant="ghost"
                 size="icon-sm"
-                className="size-8 rounded-full hover:bg-secondary"
+                className="size-8 rounded-full hover:bg-white/10 text-slate-300 hover:text-white"
                 aria-label="Previous advertisement"
                 onClick={handlePrev}
               >
@@ -274,7 +285,7 @@ export function HeroSlider({
               <Button
                 variant="ghost"
                 size="icon-sm"
-                className="size-8 rounded-full hover:bg-secondary"
+                className="size-8 rounded-full hover:bg-white/10 text-slate-300 hover:text-white"
                 aria-label="Next advertisement"
                 onClick={handleNext}
               >
@@ -284,7 +295,7 @@ export function HeroSlider({
               <button
                 type="button"
                 onClick={() => setIsPaused((prev) => !prev)}
-                className="ml-1 grid size-7 place-items-center rounded-full text-muted-foreground hover:bg-secondary hover:text-foreground"
+                className="ml-1 grid size-7 place-items-center rounded-full text-slate-400 hover:bg-white/10 hover:text-white"
                 aria-label={isPaused ? "Play slideshow" : "Pause slideshow"}
               >
                 {isPaused ? <Play className="size-3" /> : <Pause className="size-3" />}
@@ -293,7 +304,7 @@ export function HeroSlider({
           </div>
         </div>
 
-        {/* Desktop Bashundhara R/A Drop Zone Selector - Borderless & Integrated */}
+        {/* Desktop Bashundhara R/A Drop Zone Selector - Borderless & Floating Directly on Background */}
         <div className="hidden lg:flex flex-col justify-center space-y-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5">
@@ -356,9 +367,9 @@ export function HeroSlider({
       </div>
 
       {/* Mobile Bottom Strip */}
-      <div className="absolute bottom-0 left-0 right-0 z-30 grid grid-cols-3 border-t border-border/40 bg-background/70 backdrop-blur-md lg:hidden">
+      <div className="absolute bottom-0 left-0 right-0 z-30 grid grid-cols-3 border-t border-white/10 bg-black/60 backdrop-blur-md lg:hidden">
         <div className="p-2 text-center">
-          <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">Drop zone</p>
+          <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-slate-400">Drop zone</p>
           <Select value={selectedBlock} onValueChange={(value) => value && onBlockChange(value)}>
             <SelectTrigger
               aria-label="Choose delivery block"
@@ -376,12 +387,12 @@ export function HeroSlider({
             </SelectContent>
           </Select>
         </div>
-        <div className="border-x border-border/40 p-2 text-center">
-          <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">Delivery</p>
-          <p className="mt-0.5 text-xs font-bold">{formatCurrency(currentBlock.fee)}</p>
+        <div className="border-x border-white/10 p-2 text-center">
+          <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-slate-400">Delivery</p>
+          <p className="mt-0.5 text-xs font-bold text-white">{formatCurrency(currentBlock.fee)}</p>
         </div>
         <div className="p-2 text-center">
-          <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">Area</p>
+          <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-slate-400">Area</p>
           <p className="mt-0.5 text-xs font-bold text-primary truncate px-1">Bashundhara</p>
         </div>
       </div>
